@@ -1,1 +1,4 @@
-x = 0; y = 0; function preload() { filter = loadImage("https://i.postimg.cc/kX7wqJqh/filter.jpg"); } function setup() { var canvas = createCanvas(500, 400); canvas.center(); video = createCapture(VIDEO); video.size(500, 400); video.hide(); poseNet_var = ml5.poseNet(video, modelLoaded); poseNet_var.on("pose", gotPoses); }
+x = 0; y = 0; function preload() { filter = loadImage("https://i.postimg.cc/kX7wqJqh/filter.jpg"); } function setup() { var canvas = createCanvas(500, 400); canvas.center(); video = createCapture(VIDEO); video.size(500, 400); video.hide(); poseNet_var = ml5.poseNet(video, modelLoaded); poseNet_var.on("pose", gotPoses); } function gotPoses(results) { if ( results.length > 0 ) { console.log(results); x = results[0].pose.leftEar.x; y = results[0].pose.leftEar.y; console.log( "X = " + x); console.log("Y = " + y); } } function modelLoaded() { console.log("The poseNet model has been intialised"); } function draw() { image(video, 0, 0, 500, 400); // fill("#ff0051");
+ // stroke("#ff0051"); 
+ // circle(nose_x, nose_y, 40); 
+ image(filter.png, x + 10, y - 5, 70, 50); } function takeSnapshot() { save("loooooooook_at_meeeeeeee.jpeg"); }
